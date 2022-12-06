@@ -1,10 +1,14 @@
 import React from "react";
 import "./Home.css";
 import Product from "../Product/Product";
+import Header from "../Header/Header";
 
 function Home() {
   return (
+    <>
+    <Header/>
     <div className="home">
+      {/* <Header></Header> */}
       <div className="home_container">
         <img
           className="home_image"
@@ -64,6 +68,7 @@ function Home() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

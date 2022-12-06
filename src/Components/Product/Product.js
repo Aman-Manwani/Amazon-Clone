@@ -11,11 +11,13 @@ function product({title ,image,price,rating}) {
           <strong>{price}</strong>
         </p>
         <div className="product_rating">
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
+          {
+            Array(rating)
+            .fill()
+            .map((_)=>
+            <p>⭐</p>
+            )
+          }
         </div>
       </div>
       <img src={image} alt="Lean Statrup" />

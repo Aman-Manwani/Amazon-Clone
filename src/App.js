@@ -1,13 +1,15 @@
+import { Route, Routes } from 'react-router';
 import './App.css';
-import Header from './Components/Header/Header';
+// import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import {BrowserRouter as Router,sw}
+
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Home/>
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+      </Routes>
     </div>
   );
 }
