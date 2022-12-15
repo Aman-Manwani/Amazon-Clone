@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "../StateProvider/stateProvider";
 import "./Product.css";
 
-function product({title ,image,price,rating}) {
+function Product({id,title ,image,price,rating}) {
+  const {state, dispatch} = useContext(StoreContext);
+  const {basket} = state;
+
+
+  const addToBasket = () => {
+    dispatch({
+      type:'ADD_TO_BASKET',
+      item:{
+          id: id,
+          title:title,
+          image:image,
+          price:price,
+          rating:rating,
+      }
+    })
+  }
+
   return (
     <div className="product">
       <div className="product_info">
@@ -21,9 +39,9 @@ function product({title ,image,price,rating}) {
         </div>
       </div>
       <img src={image} alt="Lean Statrup" />
-      <button className="add_basket_btn">Add to Basket</button>
+      <button onClick={addToBasket}  className="add_basket_btn">Add to Basket</button>
     </div>
   );
 }
 
-export default product;
+export default Product;

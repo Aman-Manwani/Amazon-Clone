@@ -1,9 +1,18 @@
 import { createContext, useReducer } from "react";
+import Reducer, { initialState } from "./reducer";
 
-export const StateContext = createContext();
+export const StoreContext = createContext();
 
-export const StateProvider=({reducer,initialState,children})=>(
-    <StateContext.Provider value = {useReducer(reducer,initialState)}>
-        {children}
-    </StateContext.Provider>
-)
+const StateProvider = ({children}) => {
+    const [state, dispatch] = useReducer(Reducer, initialState);
+    const value = {state, dispatch};
+
+    return (
+        <StoreContext.Provider value={value}>
+            {children}
+        </StoreContext.Provider>
+    )
+}
+
+
+export default StateProvider;
