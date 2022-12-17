@@ -13,8 +13,23 @@ const Reducer = (state,action) => {
             };
 
 
-        case 'REMOVE_TO_BASKET':
-            return {state};
+        case 'REMOVE_FROM_BASKET':
+            let newBasket=[...state.basket];
+
+            const index=state.basket.findIndex((basketItem)=>basketItem.id===action.id)
+
+            if(index>=0)
+            {
+                newBasket.splice(index,1);
+            }else
+            {
+                console.log('not able to remove this item');
+            }
+
+            return {
+                ...state,
+                basket:newBasket,
+            };
 
             
         default:

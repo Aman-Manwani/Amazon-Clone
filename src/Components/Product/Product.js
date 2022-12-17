@@ -4,7 +4,7 @@ import "./Product.css";
 
 function Product({id,title ,image,price,rating}) {
   const {state, dispatch} = useContext(StoreContext);
-  const {basket} = state;
+  // const {basket} = state;
 
 
   const addToBasket = () => {
@@ -32,8 +32,11 @@ function Product({id,title ,image,price,rating}) {
           {
             Array(rating)
             .fill()
-            .map((_)=>
-            <p>⭐</p>
+            .map((_,i)=>{
+              return(
+                <p key={i}>⭐</p>
+              )
+            }
             )
           }
         </div>
